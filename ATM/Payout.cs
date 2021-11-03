@@ -30,7 +30,7 @@ namespace ATM
 
         public override void ExchangeMoney(int money)
         {
-            Console.WriteLine("Paying out 100 DKr bills");
+            Console.WriteLine("Paying out possible 100 DKr bills");
             //Handle what is this class' responsibility
             while (money >= responsibility)
             {
@@ -52,7 +52,7 @@ namespace ATM
 
         public override void ExchangeMoney(int money)
         {
-            Console.WriteLine("Paying out 50 DKr bills");
+            Console.WriteLine("Paying out possible 50 DKr bills");
             //Handle what is this class' responsibility
             while (money >= responsibility)
             {
@@ -74,7 +74,7 @@ namespace ATM
 
         public override void ExchangeMoney(int money)
         {
-            Console.WriteLine("Paying out 20 DKr coins");
+            Console.WriteLine("Paying out possible 20 DKr coins");
             //Handle what is this class' responsibility
             while (money >= responsibility)
             {
@@ -93,7 +93,7 @@ namespace ATM
         public Payout10(Payout payout = null) : base(payout) { }
         public override void ExchangeMoney(int money)
         {
-            Console.WriteLine("Paying out 10 DKr coins");
+            Console.WriteLine("Paying out possible 10 DKr coins");
             while (money >= responsibility)
             {
                 money -= responsibility;
@@ -111,7 +111,7 @@ namespace ATM
         public Payout5(Payout payout = null) : base(payout) { }
         public override void ExchangeMoney(int money)
         {
-            Console.WriteLine("Paying out 5 DKr coins");
+            Console.WriteLine("Paying out possible 5 DKr coins");
             while (money >= responsibility)
             {
                 money -= responsibility;
@@ -130,7 +130,7 @@ namespace ATM
         public Payout1(Payout payout=null) : base(payout) { }
         public override void ExchangeMoney(int money)
         {
-            Console.WriteLine("Paying out 1 DKr coins");
+            Console.WriteLine("Paying possible out 1 DKr coins");
             while (money >= responsibility)
             {
                 money -= responsibility;
