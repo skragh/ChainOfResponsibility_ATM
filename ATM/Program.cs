@@ -6,7 +6,8 @@ namespace ATM
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Payout payoutMagic = new Payout100(new Payout50(new Payout20(new Payout10(new Payout5(new Payout1())))));
+            payoutMagic.ExchangeMoney(589);
         }
     }
 }
