@@ -8,19 +8,19 @@ namespace ATM
 {
     class ATM
     {
-        public Payout handler { get; set; }
-        public ATM(Payout payoutHandler)
+        public IPayout handler { get; set; }
+        public ATM(IPayout payoutHandler)
         {
             handler = payoutHandler;
         }
         public void StartUp()
         {
             Console.WriteLine("### Welcome to the ATM run by Chain of responsibility ###");
-            Console.WriteLine("");
             var runProgram = "y";
             while (runProgram != "n")
             {
                 //presentate commands
+                Console.WriteLine();
                 Console.Write("For Money press y, to exit ATM press n: ");
                 runProgram = Console.ReadLine();
 

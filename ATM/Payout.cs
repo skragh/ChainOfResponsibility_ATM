@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace ATM
 {
-    abstract class Payout
+    interface IPayout
+    {
+        public void ExchangeMoney(int money);
+    }
+    abstract class Payout:IPayout
     {
         public Payout nextPayout { get; set; }
         public Payout(Payout payout=null)
@@ -14,7 +18,16 @@ namespace ATM
             nextPayout = payout;
         }
 
-        public abstract void ExchangeMoney(int money);
+        public virtual void ExchangeMoney(int money)
+        {
+            if(money>0)
+            {
+                if (nextPayout != null)
+                    nextPayout.ExchangeMoney(money);
+                else
+                    throw new Exception("No addequate handler available");
+            }
+        }
 
         public void print(int currency,int moneyLeft)
         { Console.WriteLine($"{currency} DKr Payed out, money left to be payed:{moneyLeft}"); }
@@ -37,9 +50,7 @@ namespace ATM
                 money -= responsibility;
                 print(responsibility, money);
             }
-            //send request to next in chain, if more is to be done.
-            if (money > 0)
-                nextPayout.ExchangeMoney(money);
+            base.ExchangeMoney(money);
         }
     }
 
@@ -60,8 +71,7 @@ namespace ATM
                 print(responsibility, money);
             }
             //send request to next in chain, if more is to be done.
-            if (money > 0)
-                nextPayout.ExchangeMoney(money);
+            base.ExchangeMoney(money);
         }
     }
 
@@ -100,8 +110,7 @@ namespace ATM
                 print(responsibility, money);
             }
             //send request to next in chain, if more is to be done.
-            if (money > 0)
-                nextPayout.ExchangeMoney(money);
+            base.ExchangeMoney(money);
         }
     }
 
@@ -117,9 +126,7 @@ namespace ATM
                 money -= responsibility;
                 print(responsibility, money);
             }
-            //send request to next in chain, if more is to be done.
-            if (money > 0)
-                nextPayout.ExchangeMoney(money);
+            base.ExchangeMoney(money);
         }
     }
 
@@ -136,9 +143,15 @@ namespace ATM
                 money -= responsibility;
                 print(responsibility, money);
             }
-            //send request to next in chain, if more is to be done.
-            if (money > 0)
-                nextPayout.ExchangeMoney(money);
+            base.ExchangeMoney(money);
+        }
+    }
+
+    class payout200 : Payout
+    {
+        public override void ExchangeMoney(int money)
+        {
+            base.ExchangeMoney(money);
         }
     }
 }
