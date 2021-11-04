@@ -146,13 +146,5 @@ namespace ATM
             base.ExchangeMoney(money);
         }
     }
-
-    class payout200 : Payout
-    {
-        public override void ExchangeMoney(int money)
-        {
-            base.ExchangeMoney(money);
-        }
-    }
 }
 
